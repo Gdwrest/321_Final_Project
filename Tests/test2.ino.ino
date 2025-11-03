@@ -1,30 +1,35 @@
 #include <Servo.h>
-// Servos basic test
 Servo servo1;
-Servo servo2;
+
 
 void setup() {
+
   Serial.begin(9600);
-  servo1.attach(9);   // first servo signal pin
-  servo2.attach(10);  // second servo signal pin
-  Serial.println("Servo test starting...");
+  pinMode(8, OUTPUT);
+  pinMode(9, INPUT);  
+  servo1.attach(10);
+  delay(800);
 }
 
-void loop() {
-  // sweep both servos 0° → 180° → 0°
-  for (int pos = 0; pos <= 180; pos += 10) {
-    servo1.write(pos);
-    servo2.write(180 - pos);
-    Serial.print("Position: ");
-    Serial.println(pos);
-    delay(300);
-  }
 
-  for (int pos = 180; pos >= 0; pos -= 10) {
-    servo1.write(pos);
-    servo2.write(180 - pos);
-    Serial.print("Position: ");
-    Serial.println(pos);
-    delay(300);
+void loop() {
+  digitalWrite(8, LOW);  delayMicroseconds(2);
+  digitalWrite(8, HIGH); delayMicroseconds(10);
+  digitalWrite(8, LOW);
+
+
+
+
+  unsigned long dur = pulseIn(9, HIGH, 30000UL);
+  if (dur == 0) {
+    Serial.println("Distance: out of range");
+  } else {
+    float cm = (dur * 0.0343f) / 2.0f;
+    if(cm > 100.0f){
+      servo1.write(180);
+      Serial.print("Moving Servo...");
+    }
+    Serial.print("Distance: "); Serial.print(cm, 1); Serial.println(" cm");
   }
+  delay(300);
 }
