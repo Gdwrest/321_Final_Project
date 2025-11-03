@@ -2,7 +2,7 @@
 Servo servo1;
 const int button_pin=12;
 void setup() {
-  
+  // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(8, OUTPUT);
   pinMode(9, INPUT);  
@@ -22,7 +22,7 @@ void buttonHandler(){
   if(reading != lastButtonState){
     lastDebounceTime=millis();
   }
-  if((millis()-lastDebounceTime) > 20){
+  if((millis()-lastDebounceTime) > 40){
     if(reading != currentButtonState){
       currentButtonState = reading;
     }
@@ -61,6 +61,6 @@ void moveServos(){
 
 
 void loop() {
-
+  // put your main code here, to run repeatedly:
   buttonHandler();
 }
