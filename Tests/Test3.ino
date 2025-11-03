@@ -5,8 +5,8 @@ Servo servo2;
 
 void setup() {
   Serial.begin(9600);
-  servo1.attach(9);   // first servo signal pin
-  servo2.attach(10);  // second servo signal pin
+  servo1.attach(9);  
+  servo2.attach(10);  
   Serial.println("Servo test starting...");
 }
 
