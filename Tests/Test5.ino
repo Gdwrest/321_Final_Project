@@ -1,7 +1,10 @@
 #include <Servo.h>
 Servo horizontial;
 Servo vertical;
+
 const int button_pin=12;
+int cmint=0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -66,7 +69,7 @@ void horizontialServo(){
   } else {
     float cm = (dur * 0.0343f) / 2.0f;
     if(cm > 50.0f && cm < 100.0f){
-      int cmInt=(int *)cm;
+      cmInt=(int)cm;
       cmInt=cmInt - 50;
       if(cmInt < 0){
         horizontial.write(0);
