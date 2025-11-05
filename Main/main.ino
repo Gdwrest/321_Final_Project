@@ -4,9 +4,9 @@ Servo vertical;
 
 const int button_pin=12;
 int cmInt=0;
-
+// This code is meant for the mirror to be 3 feet 7 inches off the ground and 17 cm from the sensor
 void setup() {
-  // put your setup code here, to run once:
+ 
   Serial.begin(9600);
   pinMode(8, OUTPUT);
   pinMode(9, INPUT);   
@@ -69,29 +69,33 @@ void horizontialServo(){
   } else {
     float cm = (dur * 0.0343f) / 2.0f;
     if(cm < 50.0f){
-      horizontial.write(0);
+      horizontial.write(20);
     }
     if(cm > 100.0f){
-        horizontial.write(45);
+        horizontial.write(0);
     }
-    if(cm > 55.0f && cm < 100.0f){
+    if(cm > 50.0f && cm < 100.0f){
       cmInt=(int)cm;
-      cmInt=cmInt - 55;
+      cmInt= cmInt - 50;
+      cmInt= cmInt/2;
+      cmInt = 25 - cmInt;
+
       if(cmInt <= 0){
         horizontial.write(0);
       } else{
-        horizontial.write(45-cmInt);
+        horizontial.write(cmInt/2);
       }
     }
-    Serial.print("Distance: "); Serial.print(cm, 1); Serial.println(" cm"); Serial.print("\n H Servo Moved to: "); Serial.print(45-cmInt, 1); Serial.print(" degrees");
+    Serial.print("Distance: "); Serial.print(cm, 1); Serial.println(" cm"); Serial.print("\n H Servo Moved to: "); Serial.print(cmInt-25, 1); Serial.print(" degrees");
   }
   delay(300);
 }
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
   buttonHandler();
 }
+
 
 
