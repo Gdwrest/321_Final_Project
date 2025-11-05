@@ -64,7 +64,7 @@ void horizontialServo(){
     Serial.println("Distance: out of range");
   } else {
     float cm = (dur * 0.0343f) / 2.0f;
-    if(cm > 50.0f && cm < 95.0f){
+    if(cm > 50.0f && cm < 100.0f){
       int cmInt=(int *)cm;
       cmInt=cmInt - 50;
       if(cmInt < 0){
