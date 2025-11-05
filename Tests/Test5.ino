@@ -10,6 +10,7 @@ void setup() {
   delay(800);
   horizontial.attach(10);
   vertical.attatch(13);
+  horizontial.write(0);
   pinMode(button_pin, INPUT_PULLUP);
 }
 
