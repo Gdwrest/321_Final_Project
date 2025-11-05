@@ -73,7 +73,7 @@ void horizontialServo(){
         horizontial.write(cmInt);
       }
     }
-    Serial.print("Distance: "); Serial.print(cm, 1); Serial.println(" cm"); Serial.print("\n H Servo Moved to: "); Serial.print(cm, 1); Serial.print("cm");
+    Serial.print("Distance: "); Serial.print(cm, 1); Serial.println(" cm"); Serial.print("\n H Servo Moved to: "); Serial.print(cmInt, 1); Serial.print("cm");
   }
   delay(300);
 }
