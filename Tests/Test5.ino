@@ -3,7 +3,7 @@ Servo horizontial;
 Servo vertical;
 
 const int button_pin=12;
-int cmint=0;
+int cmInt=0;
 
 void setup() {
   // put your setup code here, to run once:
