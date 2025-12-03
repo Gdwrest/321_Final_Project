@@ -15,3 +15,9 @@ Hardware Used
     •    Breadboard + jumper wires
     •    5V power from Arduino
     •    Optional: external 5V supply for smoother servo movement
+
+How to use:
+
+Put the top sensor above the driver and the horizontal sensor in front of the driver seat
+connect the two servos to the mirror
+click button when seated and mirror should adjust correctly for you
